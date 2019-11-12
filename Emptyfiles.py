@@ -1,22 +1,18 @@
 from tkinter import *
-
-
-def generate():
-    pass
-
+from generator import generate
+from config import *
 
 # window setup
 window = Tk()
 window.title('Empty files generator')
 variable = StringVar(window)
-variable.set('one')
-optionMenu = OptionMenu(window, variable, "one", "two")
+optionMenu = OptionMenu(window, variable, *ledgers)
 
 ledgerLabel = Label(window, text="Ledger")
 businessDateLabel = Label(window, text="Business Date YYYYMMDD")
 timeStampDate = Label(window, text="TimeStamp Date YYYYMMDD")
 sequenceNumberLabel = Label(window, text='Sequence number')
-generateButton = Button(window, text='Generate', command=generate)
+generateButton = Button(window, text='Generate', command=lambda: generate(variable.get()))
 
 sequenceNumberEntry = Entry(window)
 businessDateLabelEntry = Entry(window)
